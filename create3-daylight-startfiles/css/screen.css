@@ -1,0 +1,506 @@
+/*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+
+:root {
+    /* colors */
+    --color-Front: #0f3557;
+    --color-Back: #cce7ff;
+    /* opacity */
+
+    --global-page-color-Front: var(--color-Front);
+    --global-page-color-Back: var(--color-Back);
+
+    --opacity-light: .6;
+
+    /* transitions */
+}
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --global-page-color-Front: var(--color-Back) ;
+        --global-page-color-Back: var(--color-Front);
+    }
+}
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html {
+    font-size: 16px;
+    line-height: 1.5;
+    /* font-family: Helvetica, arial, sans-serif; */
+    font-family: "work sans", Helvetica, Arial, sans-serif;
+
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    color: var(--global-page-color-Front);
+    background-color: var(--global-page-color-Back);
+
+    font-feature-settings: "zero" 1; 
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/*
+* Remove text-shadow in selection highlight:
+* https://twitter.com/miketaylr/status/12228805301
+*
+* Customize the background color to match your design.
+*/
+
+/* ::-moz-selection {
+    background: red;
+    color: white;
+    text-shadow: none;
+} */
+
+::selection {
+    background: var(--global-page-color-Front);
+    color: var(--global-page-color-Back));
+    text-shadow: none;
+}
+
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+
+/*
+Elements: Images
+---
+Default markup for images to make them responsive
+*/
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 48px;
+    margin: 0 0 24px;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0 0 24px;
+}
+
+h3 {
+    font-size: 26px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 0 0 24px;
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+    margin: 0 0 24px;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+}
+
+li ul,
+li ol {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-style: normal;
+    font-size: 23px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+blockquote * {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+figcaption {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 8px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: LightGrey;
+    margin: 0 0 24px;
+}
+
+a {
+    color: var(--global-page-color-Front);
+    outline-color: var(--global-page-color-Front);
+    outline-width: medium;
+    outline-offset: 2px;
+}
+
+a:visited,
+a:active {
+    color: red;
+}
+
+a:hover,
+a:focus {
+    color: red;
+}
+
+label,
+input {
+    display: block;
+}
+
+select {
+    width: 100%;
+}
+
+input::placeholder {
+    color: gray;
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+
+/*
+    Object: Hide accessible
+    ---
+    Accessibly hide any element
+*/
+
+.o-hide-accessible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+/*
+    Component: Logo
+    ---
+    Website main logo
+*/
+
+.c-logo {
+    /* color: var(--color-Front); */
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: normal;   
+
+    /* display flex doet veel hier */
+    /* A flex container expands items to fill available free space or shrinks them to prevent overflow. */
+    display: flex; 
+    
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 48px;
+    /* margin-top: x; */
+    /* justify-content: flex-start; */
+    /* dit is om hel logo terug naar boven te krijgen en de rest naar onder! zie: justify-content: flex-end; bij de .c-app */
+    margin-bottom: auto;
+    /* margin-top: 8px; */
+
+
+}
+
+/*
+    Component: Sun
+    ---
+    The sun
+*/
+
+.c-sun {
+    height: 22px;
+    width: 22px;
+
+    fill: var(--global-page-color-Front);
+    
+    
+
+}
+
+.c-logo .c-sun {
+
+}
+
+/*
+    Component: App
+    ---
+    Main app wrapper
+*/
+
+.c-app{
+    padding: 32px 32px 8px;
+
+    min-height: 100vh;
+    max-width: 400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.c-app__summary{
+    font-size: 28px;
+    line-height: 40px;
+}
+
+
+
+
+/*
+    Component: Horizon
+    ---
+    Horizon with sun visualisation
+*/
+
+.c-horizon{
+
+}
+
+
+.c-horizon__sky-wrapper{
+    
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    /* background-color: green; */ /*--> to test!*/
+    padding: 22px 40px 0 0;
+
+}
+
+.c-horizon__sky{
+    /* background-color: red;
+    height: 10px; */
+
+    /* background-color: red; */ /*--> to test!*/
+    position: relative; 
+    height: 100%;
+}
+
+.c-horizon__sun{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+
+
+
+    flex-direction: column;
+    transform: translateY(22px);
+}
+
+.c-horizon__line{
+    border-top: 1px solid var(--global-page-color-Front);
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px; /* --> zie het design in xd !*/
+    margin-bottom: 32px;
+}
+
+.c-horizon__sun::before {
+    content: attr(data-time);
+    
+    font-size: 12px;
+    line-height: 14px;
+
+    text-align: center;
+
+    margin:0 0 8px 0;
+    /* background-color: green; */
+}
+
+.c-horizon__time {
+    font-size: 12px;
+    line-height: 14px;
+
+}
+
+
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+
+/*
+    Utilities: Mute
+    Mute with opacity
+*/
+
+.u-muted {
+    opacity: var(--opacity-light);
+}
+
+/*------------------------------------*\
+#STATES
+\*------------------------------------*/
+
+/*
+    Change the theme using CSS vars.
+*/
+
+
+/* Night version: just switch the light and dark vars */
+
+/*------------------------------------*\
+#MEDIA
+\*------------------------------------*/
+
+/*
+    Print styles.
+    ---
+    Inlined to avoid the additional HTTP request:
+    http://www.phpied.com/delay-loading-your-print-css/
+*/
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+        http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    /*
+    * Don't show links that are fragment identifiers,
+    * or use the `javascript:` pseudo protocol
+    */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    /*
+    * Printing Tables:
+    * http://css-discuss.incutio.com/wiki/Printing_Tables
+    */
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
